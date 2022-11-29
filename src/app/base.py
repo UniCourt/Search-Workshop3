@@ -56,11 +56,10 @@ class ApiBase(MethodView):
             return Status.FAILURE, validation_type, error_message
 
     @abstractmethod
-    async def process_post(self, *args: str, **kwargs: str) -> Tuple[str, str, dict]:
+    def process_post(self, request_data) -> Tuple[str, str, dict]:
         """
         Abstract method
-        :param args:
-        :param kwargs:
+        :param request_data:
         :return:
         """
         return Status.FAILURE, "", {}
@@ -77,5 +76,3 @@ class ApiBase(MethodView):
 
         response_message = ApiResponse.get(status, message, result=data)
         return response_message
-
-

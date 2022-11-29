@@ -26,7 +26,11 @@ class GetDeliveryInfo(ApiBase):
         :param request_data:
         :return:
         """
-        order_id = request_data['product_id']
+        try:
+            order_id = request_data['order_id']
+        except KeyError:
+            return ('400', 'Bad Request', {})
+
         cursor = self.pg_con_obj.cursor()
 
         query = f'''SELECT id,customer_id, order_status, order_purchase_timestamp,
@@ -36,6 +40,10 @@ class GetDeliveryInfo(ApiBase):
         cursor.execute(query)
 
         row = cursor.fetchone()
+
+        if not row:
+            return ('404', 'Not Found', {})
+
         delivery_info_dict = {
             'order_id':                      row[0],
             'customer_id':                   row[1],

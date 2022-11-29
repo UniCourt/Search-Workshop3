@@ -10,10 +10,12 @@ ENV POSTGRES_PASSWORD='workshop_user1'
 
 ENV POSTGRES_HOST='127.0.0.1'
 ENV POSTGRES_PORT='5435'
+COPY ./requirements.txt /
+RUN pip install -r ./requirements.txt
 
 COPY . /
 WORKDIR /src/app
-RUN pip install -r /requirements.txt
+
 EXPOSE 5000
 ENV ES_HOST='127.0.0.1'
 ENV ES_PORT=9200
