@@ -76,3 +76,5 @@ class ApiBase(MethodView):
 
         response_message = ApiResponse.get(status, message, result=data)
         return response_message
+
+

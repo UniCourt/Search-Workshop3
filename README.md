@@ -1,10 +1,12 @@
 # API Workshop
 
-One Day workshop on understanding APIs.
+A hands-on workshop to understand the basics of APIs. 
+This workshop is an extension of Search-Workshop2, where you will learn
+how to build a Flask API to interact with Elasticsearch and Postgres.
 
 ## Prerequisite
 
-##### Any Linux machine with following packages installed
+##### Any Linux machine (ubuntu is preferred) with following packages installed
 - git
 - python3.10
 - Docker
